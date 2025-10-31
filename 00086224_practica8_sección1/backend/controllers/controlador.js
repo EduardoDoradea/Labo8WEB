@@ -40,7 +40,7 @@ const createUser = (request, response) => {
 const updateUser = (request, response) => {
     const { name, email, password } = request.body;
     const id = parseInt(request.params.id);
-    pool.query("UPDATE users SET name = $2, email = $3 password = $4 WHERE id = $1", [id, name, email, password], (error, results) => {
+    pool.query("UPDATE users SET name = $2, email = $3, password = $4 WHERE id = $1", [id, name, email, password], (error, results) => {
         if (error) {
             console.error("Error al obtener usuarios:", error);
             response.status(500).json({ error: "Error interno del servidor" });
